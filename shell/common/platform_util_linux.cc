@@ -129,7 +129,7 @@ bool XDGUtil(const std::vector<std::string>& argv,
   // Setting values in EnvironmentMap to an empty-string
   // will make sure that they get unset from the environment via
   // AlterEnvironment().
-  const base::Optional<std::string>& gdk_backend =
+  const absl::optional<std::string>& gdk_backend =
       electron::ElectronBrowserMainParts::GetGDKBackend();
   options.environment["GDK_BACKEND"] = gdk_backend.has_value()
                                            ? gdk_backend.value().c_str()

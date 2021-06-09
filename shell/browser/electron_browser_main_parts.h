@@ -6,6 +6,7 @@
 #define SHELL_BROWSER_ELECTRON_BROWSER_MAIN_PARTS_H_
 
 #include <memory>
+#include <string>
 
 #include "base/callback.h"
 #include "base/metrics/field_trial.h"
@@ -90,7 +91,7 @@ class ElectronBrowserMainParts : public content::BrowserMainParts {
 
 #if defined(OS_LINUX)
   // Used by platform_util to set GDK_BACKEND.
-  static base::Optional<std::string>& GetGDKBackend();
+  static absl::optional<std::string>& GetGDKBackend();
 #endif
 
  protected:

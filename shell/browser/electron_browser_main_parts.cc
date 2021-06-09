@@ -378,8 +378,8 @@ void ElectronBrowserMainParts::PostDestroyThreads() {
 
 #if defined(OS_LINUX)
 // static
-base::Optional<std::string>& ElectronBrowserMainParts::GetGDKBackend() {
-  static base::Optional<std::string> gdk_backend;
+absl::optional<std::string>& ElectronBrowserMainParts::GetGDKBackend() {
+  static absl::optional<std::string> gdk_backend;
   return gdk_backend;
 }
 #endif
@@ -392,7 +392,7 @@ void ElectronBrowserMainParts::ToolkitInitialized() {
   // check if the user has set it so we can use it later.
   std::string backend;
   if (base::Environment::Create()->GetVar("GDK_BACKEND", &backend))
-    GetGDKBackend().reset(backend);
+    GetGDKBackend() = backend;
 
   auto linux_ui = BuildGtkUi();
   linux_ui->Initialize();
